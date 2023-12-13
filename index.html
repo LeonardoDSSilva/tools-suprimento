@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Suprimento</title>
+	<link rel="stylesheet" href="./style.css">
 	<script src="https://www.gstatic.com/charts/loader.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -38,8 +39,30 @@
 		</Select> -->
 	</div>
 
-	<div id="chart_div"></div>
-	<canvas id="myChart" width="400" height="200"></canvas>
+	<div class="hidden" id="charts">
+		<canvas id="myChart" width="400" height="150"></canvas>
+		<div id="chart_div"></div>
+	</div>
+
+	<div class="hidden" id="no-data">
+		<h1>Não há Obras para esse suprimento</h1>
+		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-emoji-frown"
+			viewBox="0 0 16 16">
+			<path
+				d="M8 1.5a6.5 6.5 0 0 0-6.473 6.317c-.002.09-.003.18-.003.27a6.5 6.5 0 0 0 12.946.001c0-.09-.001-.18-.003-.27A6.5 6.5 0 0 0 8 1.5zm3.5 9a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1 0-1h7a.5.5 0 0 1 .5.5zm-3-3a.5.5 0 0 0-.5.5v.5a.5.5 0 0 0 1 0v-.5a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v.5a.5.5 0 0 0 1 0v-.5a.5.5 0 0 0-.5-.5zm-6.5-6a5.5 5.5 0 0 1 11 0H5z" />
+		</svg>
+		<span>Verficar se no suprimento tem obras cadastradas</span>
+			<a href="https://toolsengenharia-team.monday.com/boards/5622755750">Ir para o Monday
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-left" width="44"
+					height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
+					stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+					<path
+						d="M5 12h14m-4 4l4 -4l-4 -4" />
+				</svg>
+			</a>
+	</div>
+
 
 </body>
 <script src=./main.js></script>

@@ -1,8 +1,5 @@
-
-
 window.onload = function() {
 	carregarInformacoes();
-
 };
 
 function carregarInformacoes() {
@@ -36,41 +33,3 @@ function carregarInformacoes() {
 		}
 	}
 }
-
-
-
-
-/* 
-google.charts.load('current', { 'packages': ['timeline'] });
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-	var container = document.getElementById('chart_div');
-	var chart = new google.visualization.Timeline(container);
-	var dataTable = new google.visualization.DataTable();
-
-	dataTable.addColumn({ type: 'string', id: 'Obra' });
-	dataTable.addColumn({ type: 'date', id: 'Start' });
-	dataTable.addColumn({ type: 'date', id: 'End' });
-	dataTable.addRows([
-		['Washington', new Date(1789, 3, 30), new Date(1797, 2, 4)],
-		['Adams', new Date(1797, 2, 4), new Date(1801, 2, 4)],
-		['Jefferson', new Date(1801, 2, 4), new Date(1809, 2, 4)],
-		['Madison', new Date(1809, 2, 4), new Date(1817, 2, 4)],
-		['Monroe', new Date(1817, 2, 4), new Date(1825, 2, 4)],
-		['Adams', new Date(1825, 2, 4), new Date(1829, 2, 4)],
-		['Jackson', new Date(1829, 2, 4), new Date(1837, 2, 4)]
-	]);
-
-	function options() {
-		return {
-			width: 2000,
-			height: 800,
-		};
-	}
-
-	chart.draw(dataTable, options());
-
-
-}
- */

@@ -30,11 +30,13 @@ document.querySelector('#suprimento').addEventListener('change', async (event) =
 		});
 		item1.filter((item) => {
 			if (Object.keys(item) == event.target.value) {
-				//console.log(item)
-				const data = item[Object.keys(item)].split('-');
-				if (data.length >= 3) {
-					itemObject['Inicio'] = new Date(data[0], data[1] - 1, data[2]);
-					itemObject['Término'] = new Date(data[0], data[1] - 1, 2);
+				const dataObj = item[Object.keys(item)].split('-');
+				if (dataObj.length >= 3) {
+					const data = new Date(dataObj[0], dataObj[1] - 1, dataObj[2]);
+					if (data >= new Date()){
+						itemObject['Inicio'] = data;
+						itemObject['Término'] = new Date(data.getTime() + 24 * 60 * 60 * 1000);
+					}
 				}
 			}
 		});
@@ -43,6 +45,20 @@ document.querySelector('#suprimento').addEventListener('change', async (event) =
 			dados.push(itemObject);
 		}
 	});	
+
+	if (dados.length == 0) {
+		document.querySelector('#no-data').classList.remove('hidden');
+		document.querySelector('#no-data').classList.add('elem');
+		document.querySelector('#charts').classList.add('hidden');
+		document.querySelector('#charts').classList.remove('elem');
+
+		return;
+	}
+
+	document.querySelector('#no-data').classList.add('hidden');
+	document.querySelector('#no-data').classList.remove('elem');
+	document.querySelector('#charts').classList.remove('hidden');
+	document.querySelector('#charts').classList.add('elem');
 
 	regerarGrafico(dados);
 	graficoChartJSLine(dados);
@@ -83,7 +99,7 @@ function regerarGrafico(dados) {
 		dataTable.addRows(dados.map((item) => [item.OBRA, item.Inicio, item.Término]));
 
 		var options = {
-			width: 2000,
+			// width: 1400,
 			height: 200,
 			timeline: { showRowLabels: true },
 			avoidOverlappingGridLines: false
@@ -96,14 +112,10 @@ function regerarGrafico(dados) {
 
 function graficoChartJSLine(dadosObras) {
 
-
 	// DESTRUIR O GRÁFICO ANTERIOR
-	// myChart.destroy();
-
 	if (Chart.getChart("myChart")){
 		Chart.getChart("myChart").destroy();
-	  }
-
+	}
 
 	const dados = dadosObras.map((item) => {
 		return {
@@ -116,8 +128,6 @@ function graficoChartJSLine(dadosObras) {
 
 	const ctx = document.getElementById('myChart').getContext('2d');
 
-	// x -> OBRA
-	// y -> Data Inicio
 	const myChart = new Chart(ctx, {
 		type: 'line',
 		data: {
