@@ -51,17 +51,16 @@ document.querySelector('#suprimento').addEventListener('change', async (event) =
 		document.querySelector('#no-data').classList.add('elem');
 		document.querySelector('#charts').classList.add('hidden');
 		document.querySelector('#charts').classList.remove('elem');
-
 		return;
+	} else {
+		document.querySelector('#no-data').classList.add('hidden');
+		document.querySelector('#no-data').classList.remove('elem');
+		document.querySelector('#charts').classList.remove('hidden');
+		document.querySelector('#charts').classList.add('elem');
+
+		regerarGrafico(dados);
+		graficoChartJSLine(dados);
 	}
-
-	document.querySelector('#no-data').classList.add('hidden');
-	document.querySelector('#no-data').classList.remove('elem');
-	document.querySelector('#charts').classList.remove('hidden');
-	document.querySelector('#charts').classList.add('elem');
-
-	regerarGrafico(dados);
-	graficoChartJSLine(dados);
 
 });
 
